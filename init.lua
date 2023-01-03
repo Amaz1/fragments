@@ -1,19 +1,26 @@
-local world_seed = minetest.get_mapgen_params().seed
+local world_seed = minetest.get_mapgen_setting("seed")
 local rand = PcgRandom(world_seed)
-
+minetest.set_mapgen_setting("mg_name", "singlenode", true)
 old_old_mapgen = {}
 
-old_old_mapgen.tower_position = {
-	x = rand:next(-4000, 4000),
-	z = rand:next(-4000, 4000)
-}
+local storage = minetest.get_mod_storage()
+if storage:contains("tower:tower_position") then
+	old_old_mapgen.tower_position = minetest.deserialize(storage:get_string("tower:tower_position"))
+else
+	old_old_mapgen.tower_position = {
+		x = rand:next(1000, 3000),
+		z = rand:next(1000, 3000)
+	}
+	if rand:next(1, 2) == 1 then
+		old_old_mapgen.tower_position.x = old_old_mapgen.tower_position.x * -1
+	end
+	if rand:next(1, 2) == 1 then
+		old_old_mapgen.tower_position.z = old_old_mapgen.tower_position.z * -1
+	end
+	storage:set_string("tower:tower_position", minetest.serialize(old_old_mapgen.tower_position))
+end
 
 local tower_position = old_old_mapgen.tower_position
-if (tower_position.x > -1000 and tower_position.x < 1000) or
-	(tower_position.z > -1000 and tower_position.z < 1000) then
-	minetest.log("warning", "Tower Position close to spawn (less than 1000 nodes).")
-end
---print(dump(tower_position))
 
 local modpath = minetest.get_modpath("old_old_mapgen")
 

@@ -88,7 +88,7 @@ local function tower_locate(itemstack, placer)
 		})
 		minetest.add_particlespawner({
 			amount = 240,
-			time = 55,
+			time = 60,
 			exptime = 5,
 			collisiondetection = true,
 			object_collision = true,
@@ -215,6 +215,29 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 		for _, p in pairs(nodes) do
 			minetest.remove_node(p)
 		end
+		minetest.add_particlespawner({
+			amount = 500,
+			time = 0.0001,
+			exptime = 7,
+			collisiondetection = false,
+			pos = pos,
+			texpool = {
+				"old_old_mapgen_tower_controller.png",
+				"blocks_amethyst.png",
+				"blocks_lapis_lazuli.png",
+				"default_mese_block.png",
+				"default_diamond_block.png",
+			},
+			glow = 14,
+			attract = {
+				kind = "point",
+				strength = -7,
+				origin = pos,
+			},
+			radius = 0.1,
+			vel = vector.new(0,0,0),
+			acc = vector.new(0,0,0),
+		})
 		minetest.chat_send_player(name, minetest.colorize("purple", "Initializing Teleport..."))
 		for i = 1, 5 do
 			minetest.after(i, function()
@@ -244,10 +267,53 @@ minetest.register_node("old_old_mapgen:floatlands_teleporter", {
 			return
 		end
 		local meta = clicker:get_meta()
-		meta:set_string("tower:realm", "floatlands")
-		old_old_mapgen.spawn_floatlands(clicker)
-		clicker:set_physics_override({gravity = 0.55})
+		if meta:get_string("tower:teleporting") == "floatlands" then
+			minetest.chat_send_player(clicker:get_player_name(),
+				minetest.colorize("yellow", "Already teleporting!"))
+			-- In case there's a bug or the player leaves before teleporting...
+			minetest.after(7, function()
+				if clicker and clicker:is_player() then
+					clicker:get_meta():set_string("tower:teleporting", "")
+				end
+			end)
+			return
+		end
+		meta:set_string("tower:teleporting", "floatlands")
+		minetest.chat_send_player(clicker:get_player_name(),
+			minetest.colorize("yellow", "Preparing teleport...."))
+		minetest.add_particlespawner({
+			amount = 2500,
+			time = 10,
+			exptime = 7,
+			pos = {
+				min = {x = pos.x - 0.5, y = pos.y, z = pos.z - 0.5},
+				max = {x = pos.x + 0.5, y = pos.y, z = pos.z + 0.5},
+			},
+			texpool = {
+				"default_gold_block.png",
+			},
+			glow = 14,
+			attract = {
+				kind = "point",
+				strength = 0.5,
+				origin = {x=pos.x, y = pos.y+30, z = pos.z},
+				direction = vector.new(0,1,0),
+			},
+			vel = vector.new(0,0,0),
+			acc = vector.new(0,0,0),
+		})
+		minetest.after(7, function()
+			if clicker and clicker:is_player() then
+				meta = clicker:get_meta()
+				meta:set_string("tower:teleporting", "")
+				meta:set_string("tower:realm", "floatlands")
+				old_old_mapgen.spawn_floatlands(clicker)
+				clicker:set_physics_override({gravity = 0.55})
+				minetest.chat_send_player(clicker:get_player_name(),
+					minetest.colorize("yellow", "Teleported to the floatlands! Good luck!"))
+			end
+		end)
 	end,
-	
+	use_texture_alpha = "clip",
 	groups = {not_in_creative_inventory = 1, undigable = 1},
 })

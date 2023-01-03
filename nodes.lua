@@ -203,6 +203,34 @@ minetest.register_node("old_old_mapgen:diamond_block", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
+minetest.register_node("old_old_mapgen:gold_block", {
+	description = "Gold",
+	tiles = {"default_gold_block.png"},
+	is_ground_content = true,
+	groups = {not_in_creative_inventory = 1, unbreakable = 1},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("old_old_mapgen:ladder_wood", {
+	description = "Ladder",
+	drawtype = "signlike",
+	tiles = {"default_ladder_wood.png"},
+	inventory_image = "default_ladder_wood.png",
+	wield_image = "default_ladder_wood.png",
+	paramtype = "light",
+	paramtype2 = "wallmounted",
+	sunlight_propagates = true,
+	walkable = false,
+	climbable = true,
+	is_ground_content = false,
+	selection_box = {
+		type = "wallmounted",
+	},
+	groups = {undigable = 1, not_in_creative_inventory = 1},
+	legacy_wallmounted = true,
+	sounds = default.node_sound_wood_defaults(),
+})
+
 minetest.register_node("old_old_mapgen:desert_sandstone_brick", {
 	description = "Unbreakable Desert Sandstone Brick",
 	tiles = {"default_desert_sandstone_brick.png"},
@@ -251,7 +279,7 @@ minetest.register_node("old_old_mapgen:glass", {
 	is_ground_content = false,
 	sunlight_propagates = true,
 	sounds = default.node_sound_glass_defaults(),
-	groups = {not_in_creative_inventory = 1, undigable = 1, cracky = 2}
+	groups = {not_in_creative_inventory = 1, undigable = 1}
 })
 
 minetest.register_node("old_old_mapgen:obsidian_glass", {
