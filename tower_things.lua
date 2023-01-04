@@ -71,7 +71,7 @@ local function tower_locate(itemstack, placer)
 			pos = vector.new(0,1,0),
 			attached = placer,
 			texture = {
-				name = "blocks_lapis_chunk.png",
+				name = "old_old_mapgen_lapis_chunk.png",
 				alpha_tween = {1, 0},
 			},
 			glow = 3,
@@ -95,7 +95,7 @@ local function tower_locate(itemstack, placer)
 			bounce = 1,
 			pos = vector.new(0,1,0),
 			attached = placer,
-			texture = "blocks_lapis_chunk.png",
+			texture = "old_old_mapgen_lapis_chunk.png",
 			glow = 3,
 			minsize = 0.1,
 			maxsize = 0.7,
@@ -223,8 +223,8 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 			pos = pos,
 			texpool = {
 				"old_old_mapgen_tower_controller.png",
-				"blocks_amethyst.png",
-				"blocks_lapis_lazuli.png",
+				"old_old_mapgen_amethyst.png",
+				"old_old_mapgen_lapis_lazuli.png",
 				"default_mese_block.png",
 				"default_diamond_block.png",
 			},

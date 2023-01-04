@@ -32,6 +32,7 @@ dofile(modpath .. "/decorations.lua")
 dofile(modpath .. "/mapgen.lua")
 dofile(modpath .. "/floatlands.lua")
 dofile(modpath .. "/sling.lua")
+dofile(modpath .. "/stamina.lua")
 dofile(modpath .. "/welcome.lua")
 
 minetest.register_on_newplayer(function(player)

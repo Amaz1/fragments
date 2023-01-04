@@ -1,6 +1,6 @@
 minetest.register_node("old_old_mapgen:stone_with_amethyst", {
 	description = "Amethyst Ore",
-	tiles = {"default_stone.png^blocks_mineral_amethyst.png"},
+	tiles = {"default_stone.png^old_old_mapgen_mineral_amethyst.png"},
 	groups = {crumbly = 1, cracky = 3},
 	drop = {
 		items = {
@@ -15,7 +15,7 @@ minetest.register_node("old_old_mapgen:stone_with_amethyst", {
 
 minetest.register_craftitem("old_old_mapgen:amethyst_crystal", {
 	description = "Amethyst Crystal",
-	inventory_image = "blocks_amethyst_crystal.png",
+	inventory_image = "old_old_mapgen_amethyst_crystal.png",
 })
 
 minetest.register_ore({
@@ -32,7 +32,7 @@ minetest.register_ore({
 minetest.register_node("old_old_mapgen:amethyst", {
 	description = "Amethyst",
 	drawtype = "glasslike",
-	tiles = {"blocks_amethyst.png"},
+	tiles = {"old_old_mapgen_amethyst.png"},
 	paramtype = "light",
 	use_texture_alpha = "blend",
 	is_ground_content = true,
@@ -52,7 +52,7 @@ minetest.register_craft({
 
 minetest.register_node("old_old_mapgen:lapis_lazuli", {
 	description = "Lapis Lazuli",
-	tiles = {"blocks_lapis_lazuli.png"},
+	tiles = {"old_old_mapgen_lapis_lazuli.png"},
 	is_ground_content = true,
 	groups = {cracky = 2},
 	sounds = default.node_sound_stone_defaults(),
@@ -60,12 +60,12 @@ minetest.register_node("old_old_mapgen:lapis_lazuli", {
 
 minetest.register_craftitem("old_old_mapgen:lapis_chunk", {
 	description = "Lapis Lazuli Chunk",
-	inventory_image = "blocks_lapis_chunk.png",
+	inventory_image = "old_old_mapgen_lapis_chunk.png",
 })
 
 minetest.register_node("old_old_mapgen:desert_stone_with_lapis", {
 	description = "Lapis Lazuli Ore",
-	tiles = {"default_desert_stone.png^blocks_mineral_lapis.png"},
+	tiles = {"default_desert_stone.png^old_old_mapgen_mineral_lapis.png"},
 	groups = {cracky = 2},
 	drop = {
 		items = {
@@ -170,7 +170,7 @@ minetest.register_node("old_old_mapgen:gold_block", {
 minetest.register_node("old_old_mapgen:undigable_amethyst", {
 	description = "Amethyst",
 	drawtype = "glasslike",
-	tiles = {"blocks_amethyst.png"},
+	tiles = {"old_old_mapgen_amethyst.png"},
 	paramtype = "light",
 	use_texture_alpha = "blend",
 	is_ground_content = true,
@@ -181,7 +181,7 @@ minetest.register_node("old_old_mapgen:undigable_amethyst", {
 
 minetest.register_node("old_old_mapgen:undigable_lapis_lazuli", {
 	description = "Lapis Lazuli",
-	tiles = {"blocks_lapis_lazuli.png"},
+	tiles = {"old_old_mapgen_lapis_lazuli.png"},
 	is_ground_content = true,
 	groups = {not_in_creative_inventory = 1, unbreakable = 1},
 	sounds = default.node_sound_stone_defaults(),
