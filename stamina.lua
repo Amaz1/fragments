@@ -200,7 +200,7 @@ if settings:get_bool("enable_damage") and minetest.is_yes(settings:get_bool("ena
                hud_elem_type = "statbar",
                position = {x = 0.5, y = 1},
                size = {x = 24, y = 24},
-               text = "old_old_mapgen_hud_fg.png",
+               text = "fragments_hud_fg.png",
                number = level,
                alignment = {x = -1, y = -1},
                offset = {x = -266, y = -110},

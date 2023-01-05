@@ -1,5 +1,5 @@
-local tower_position = old_old_mapgen.tower_position
-local modpath = minetest.get_modpath("old_old_mapgen")
+local tower_position = fragments.tower_position
+local modpath = minetest.get_modpath("fragments")
 
 local function rshift(x, by)
   return math.floor(x / 2 ^ by)
@@ -262,7 +262,7 @@ minetest.register_on_generated(function(minp, maxp, s)
 					if tower == true then
 						if x == tower_position.x and z == tower_position.z and y == math.floor(stone_y) then
 						tower = "very_true"
-						tower_position.y = y - 7 --offset for base
+						tower_position.y = y - 6 --offset for base
 						end
 					end
 				elseif y <= WATER_LEVEL then
@@ -368,7 +368,7 @@ minetest.register_on_generated(function(minp, maxp, s)
 	local y0 = minp.y
 	local z0 = minp.z
 	local c_stone = minetest.get_content_id("default:stone")
-	local c_void = minetest.get_content_id("old_old_mapgen:void")
+	local c_void = minetest.get_content_id("fragments:void")
 	local stone
 	if minp.y == 29568 or minp.y == 22048 then
 		stone = true
@@ -395,7 +395,7 @@ minetest.register_on_generated(function(minp, maxp, s)
 	vm:write_to_map()
 end)
 
-function old_old_mapgen.spawn_base(player)
+function fragments.spawn_base(player)
 	local x = math.random(-1000, 1000)
 	local z = math.random(-1000, 1000)
 	local seed = 383130685233454422

@@ -29,7 +29,7 @@ local welcome = 	"size[20,16]" ..
 	"<img name=default_steel_ingot.png width=32 hight=32><img name=default_stick.png width=32 hight=32>" ..
 	"<img name=default_steel_ingot.png width=32 hight=32><img name=blank.png width=32>" ..
 	"<img name=gui_furnace_arrow_bg.png^[transformR270 width=32 hight=32><img name=blank.png width=32>" ..
-	"<img name=old_old_mapgen_sling.png width=32 hight=32>" ..
+	"<img name=fragments_sling.png width=32 hight=32>" ..
 	"\n<img name=blank.png width=32><img name=default_stick.png width=32 hight=32>\n" ..
 	"Bouncer:\n" ..
 	"<img name=default_mese_crystal_fragment.png width=32 hight=32>" ..
@@ -39,7 +39,7 @@ local welcome = 	"size[20,16]" ..
 	"<img name=default_diamond.png width=32 hight=32>" ..
 	"<img name=default_diamond.png width=32 hight=32><img name=blank.png width=32>" ..
 	"<img name=gui_furnace_arrow_bg.png^[transformR270 width=32 hight=32><img name=blank.png width=32>" ..
-	"<img name=old_old_mapgen_bouncer.png width=32 hight=32>\n" ..
+	"<img name=fragments_bouncer.png width=32 hight=32>\n" ..
 	"<img name=default_mese_crystal_fragment.png width=32 hight=32>" ..
 	"<img name=default_mese_crystal_fragment.png width=32 hight=32>" ..
 	"<img name=default_mese_crystal_fragment.png width=32 hight=32>\n\n" ..
@@ -58,23 +58,23 @@ local welcome = 	"size[20,16]" ..
 
 	"<style size=18><b>Crafting:</b></style>\n" .. 
 	"Tower Locator:\n" ..
-	"<img name=default_diamond.png width=32 hight=32><img name=blocks_lapis_chunk.png width=32 hight=32>" ..
+	"<img name=default_diamond.png width=32 hight=32><img name=fragments_lapis_chunk.png width=32 hight=32>" ..
 	"<img name=default_diamond.png width=32 hight=32>\n" ..
-	"<img name=blocks_lapis_chunk.png width=32 hight=32><img name=default_gold_ingot.png width=32 hight=32>" ..
-	"<img name=blocks_lapis_chunk.png width=32 hight=32><img name=blank.png width=32>" ..
+	"<img name=fragments_lapis_chunk.png width=32 hight=32><img name=default_gold_ingot.png width=32 hight=32>" ..
+	"<img name=fragments_lapis_chunk.png width=32 hight=32><img name=blank.png width=32>" ..
 	"<img name=gui_furnace_arrow_bg.png^[transformR270 width=32 hight=32><img name=blank.png width=32>" ..
-	"<img name=old_old_mapgen_tower_locator.png width=32 hight=32>" ..
-	"\n<img name=default_diamond.png width=32 hight=32><img name=blocks_lapis_chunk.png width=32 hight=32>" ..
+	"<img name=fragments_tower_locator.png width=32 hight=32>" ..
+	"\n<img name=default_diamond.png width=32 hight=32><img name=fragments_lapis_chunk.png width=32 hight=32>" ..
 	"<img name=default_diamond.png width=32 hight=32>\n" ..
 	"Tower Key\n" ..
-	"<img name=blocks_amethyst_crystal.png width=32 hight=32><img name=blocks_amethyst_crystal.png width=32 hight=32>" ..
-	"<img name=blocks_amethyst_crystal.png width=32 hight=32>\n" ..
-	"<img name=blocks_amethyst_crystal.png width=32 hight=32><img name=default_gold_ingot.png width=32 hight=32>" ..
-	"<img name=blocks_amethyst_crystal.png width=32 hight=32><img name=blank.png width=32>" ..
+	"<img name=fragments_amethyst_crystal.png width=32 hight=32><img name=fragments_amethyst_crystal.png width=32 hight=32>" ..
+	"<img name=fragments_amethyst_crystal.png width=32 hight=32>\n" ..
+	"<img name=fragments_amethyst_crystal.png width=32 hight=32><img name=default_gold_ingot.png width=32 hight=32>" ..
+	"<img name=fragments_amethyst_crystal.png width=32 hight=32><img name=blank.png width=32>" ..
 	"<img name=gui_furnace_arrow_bg.png^[transformR270 width=32 hight=32><img name=blank.png width=32>" ..
-	"<img name=old_old_mapgen_tower_key.png width=32 hight=32>" ..
-	"\n<img name=blocks_amethyst_crystal.png width=32 hight=32><img name=blocks_amethyst_crystal.png width=32 hight=32>" ..
-	"<img name=blocks_amethyst_crystal.png width=32 hight=32>\n" ..
+	"<img name=fragments_tower_key.png width=32 hight=32>" ..
+	"\n<img name=fragments_amethyst_crystal.png width=32 hight=32><img name=fragments_amethyst_crystal.png width=32 hight=32>" ..
+	"<img name=fragments_amethyst_crystal.png width=32 hight=32>\n" ..
 
 	"<style size=20 color=blue><center>Finding and Activating the Tower</center></style>" ..
 	"Once you've ready, use the tower locator to find the tower! It might take a bit of trial and error to find the " ..
@@ -83,8 +83,8 @@ local welcome = 	"size[20,16]" ..
 	"as the only way out is by dying. To activate the tower, you need to make sure that you have the following resources:\n" ..
 	"<left><b>-One Mese Block</b> <item name=default:mese width=40 height=40 rotate=yes>\n" ..
 	"<b>-One Diamond Block</b> <item name=default:diamondblock width=40 height=40 rotate=yes>\n" ..
-	"<b>-One Amethyst Block</b> <item name=old_old_mapgen:amethyst width=40 height=40 rotate=yes>\n" ..
-	"<b>-One Lapis Lazuli Block</b> <item name=old_old_mapgen:lapis_lazuli width=40 height=40 rotate=yes></left>\n" ..
+	"<b>-One Amethyst Block</b> <item name=fragments:amethyst width=40 height=40 rotate=yes>\n" ..
+	"<b>-One Lapis Lazuli Block</b> <item name=fragments:lapis_lazuli width=40 height=40 rotate=yes></left>\n" ..
 	
 	"And that is all that I can tell you - for as far as I know, no one has made it that far before... Or, rather, " ..
 	"no one has returned after having made it that far. The rest, you will have to work out for yourself.\n" ..

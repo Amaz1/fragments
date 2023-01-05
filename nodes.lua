@@ -1,26 +1,26 @@
-minetest.register_node("old_old_mapgen:stone_with_amethyst", {
+minetest.register_node("fragments:stone_with_amethyst", {
 	description = "Amethyst Ore",
-	tiles = {"default_stone.png^old_old_mapgen_mineral_amethyst.png"},
+	tiles = {"default_stone.png^fragments_mineral_amethyst.png"},
 	groups = {crumbly = 1, cracky = 3},
 	drop = {
 		items = {
 			{
 				rarity = 1,
-				items = {"old_old_mapgen:amethyst_crystal"},
+				items = {"fragments:amethyst_crystal"},
 			},
 		},
 	},
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_craftitem("old_old_mapgen:amethyst_crystal", {
+minetest.register_craftitem("fragments:amethyst_crystal", {
 	description = "Amethyst Crystal",
-	inventory_image = "old_old_mapgen_amethyst_crystal.png",
+	inventory_image = "fragments_amethyst_crystal.png",
 })
 
 minetest.register_ore({
 	ore_type       = "scatter",
-	ore            = "old_old_mapgen:stone_with_amethyst",
+	ore            = "fragments:stone_with_amethyst",
 	wherein        = "default:stone",
 	clust_scarcity = 17 * 17 * 17,
 	clust_num_ores = 5,
@@ -29,10 +29,10 @@ minetest.register_ore({
 	y_min          = 250,
 })
 
-minetest.register_node("old_old_mapgen:amethyst", {
+minetest.register_node("fragments:amethyst", {
 	description = "Amethyst",
 	drawtype = "glasslike",
-	tiles = {"old_old_mapgen_amethyst.png"},
+	tiles = {"fragments_amethyst.png"},
 	paramtype = "light",
 	use_texture_alpha = "blend",
 	is_ground_content = true,
@@ -42,36 +42,36 @@ minetest.register_node("old_old_mapgen:amethyst", {
 })
 
 minetest.register_craft({
-	output = "old_old_mapgen:amethyst",
+	output = "fragments:amethyst",
 	recipe = {
-		{"old_old_mapgen:amethyst_crystal", "old_old_mapgen:amethyst_crystal", "old_old_mapgen:amethyst_crystal"},
-		{"old_old_mapgen:amethyst_crystal", "old_old_mapgen:amethyst_crystal", "old_old_mapgen:amethyst_crystal"},
-		{"old_old_mapgen:amethyst_crystal", "old_old_mapgen:amethyst_crystal", "old_old_mapgen:amethyst_crystal"},
+		{"fragments:amethyst_crystal", "fragments:amethyst_crystal", "fragments:amethyst_crystal"},
+		{"fragments:amethyst_crystal", "fragments:amethyst_crystal", "fragments:amethyst_crystal"},
+		{"fragments:amethyst_crystal", "fragments:amethyst_crystal", "fragments:amethyst_crystal"},
 	}
 })
 
-minetest.register_node("old_old_mapgen:lapis_lazuli", {
+minetest.register_node("fragments:lapis_lazuli", {
 	description = "Lapis Lazuli",
-	tiles = {"old_old_mapgen_lapis_lazuli.png"},
+	tiles = {"fragments_lapis_lazuli.png"},
 	is_ground_content = true,
 	groups = {cracky = 2},
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_craftitem("old_old_mapgen:lapis_chunk", {
+minetest.register_craftitem("fragments:lapis_chunk", {
 	description = "Lapis Lazuli Chunk",
-	inventory_image = "old_old_mapgen_lapis_chunk.png",
+	inventory_image = "fragments_lapis_chunk.png",
 })
 
-minetest.register_node("old_old_mapgen:desert_stone_with_lapis", {
+minetest.register_node("fragments:desert_stone_with_lapis", {
 	description = "Lapis Lazuli Ore",
-	tiles = {"default_desert_stone.png^old_old_mapgen_mineral_lapis.png"},
+	tiles = {"default_desert_stone.png^fragments_mineral_lapis.png"},
 	groups = {cracky = 2},
 	drop = {
 		items = {
 			{
 				rarity = 1,
-				items = {"old_old_mapgen:lapis_chunk"},
+				items = {"fragments:lapis_chunk"},
 			},
 		},
 	},
@@ -80,7 +80,7 @@ minetest.register_node("old_old_mapgen:desert_stone_with_lapis", {
 
 minetest.register_ore({
 	ore_type       = "scatter",
-	ore            = "old_old_mapgen:desert_stone_with_lapis",
+	ore            = "fragments:desert_stone_with_lapis",
 	wherein        = "default:desert_stone",
 	clust_scarcity = 10 * 10 * 10,
 	clust_num_ores = 2,
@@ -90,17 +90,17 @@ minetest.register_ore({
 })
 
 minetest.register_craft({
-	output = "old_old_mapgen:lapis_lazuli",
+	output = "fragments:lapis_lazuli",
 	recipe = {
-		{"old_old_mapgen:lapis_chunk", "old_old_mapgen:lapis_chunk", "old_old_mapgen:lapis_chunk"},
-		{"old_old_mapgen:lapis_chunk", "old_old_mapgen:lapis_chunk", "old_old_mapgen:lapis_chunk"},
-		{"old_old_mapgen:lapis_chunk", "old_old_mapgen:lapis_chunk", "old_old_mapgen:lapis_chunk"},
+		{"fragments:lapis_chunk", "fragments:lapis_chunk", "fragments:lapis_chunk"},
+		{"fragments:lapis_chunk", "fragments:lapis_chunk", "fragments:lapis_chunk"},
+		{"fragments:lapis_chunk", "fragments:lapis_chunk", "fragments:lapis_chunk"},
 	}
 })
 
 -- Unbreakable things for the tower
 
-minetest.register_node("old_old_mapgen:stone_brick", {
+minetest.register_node("fragments:stone_brick", {
 	description = "Unbreakable Stone Brick",
 	tiles = {"default_stone_brick.png"},
 	liquids_pointable = true,
@@ -108,7 +108,7 @@ minetest.register_node("old_old_mapgen:stone_brick", {
 	groups = {not_in_creative_inventory = 1, undigable = 1},
 })
 
-minetest.register_node("old_old_mapgen:stone_brick_fake", {
+minetest.register_node("fragments:stone_brick_fake", {
 	description = "Unbreakable Fake Stone Brick",
 	walkable = false,
 	sunlight_propagates = true,
@@ -118,7 +118,7 @@ minetest.register_node("old_old_mapgen:stone_brick_fake", {
 })
 
 stairs.register_stair_and_slab("undigable_stone_brick",
-	"old_old_mapgen:stone_brick",
+	"fragments:stone_brick",
 	{not_in_creative_inventory = 1, undigable = 1},
 	{"default_stone_brick.png"},
 	"Stone Brick Stair",
@@ -130,7 +130,7 @@ stairs.register_stair_and_slab("undigable_stone_brick",
 )
 
 stairs.register_stair_and_slab("undigable_stone_block",
-	"old_old_mapgen:stone_block",
+	"fragments:stone_block",
 	{not_in_creative_inventory = 1, undigable = 1},
 	{"default_stone_block.png"},
 	"Stone Block Stair",
@@ -142,7 +142,7 @@ stairs.register_stair_and_slab("undigable_stone_block",
 )
 
 stairs.register_stair_and_slab("undigable_desert_stone_brick",
-	"old_old_mapgen:desert_stone_brick",
+	"fragments:desert_stone_brick",
 	{not_in_creative_inventory = 1, undigable = 1},
 	{"default_desert_stone_brick.png"},
 	"Desert Stone Brick Stair",
@@ -153,24 +153,24 @@ stairs.register_stair_and_slab("undigable_desert_stone_brick",
 	"Outer Desert Stone Brick Stair"
 )
 
-minetest.register_node("old_old_mapgen:sandstone_brick", {
+minetest.register_node("fragments:sandstone_brick", {
 	description = "Unbreakable Sandstone Brick",
 	tiles = {"default_sandstone_brick.png"},
 	sounds = default.node_sound_stone_defaults(),
 	groups = {not_in_creative_inventory = 1, undigable = 1},
 })
 
-minetest.register_node("old_old_mapgen:gold_block", {
+minetest.register_node("fragments:gold_block", {
 	description = "Unbreakable Gold Block",
 	tiles = {"default_gold_block.png"},
 	sounds = default.node_sound_metal_defaults(),
 	groups = {not_in_creative_inventory = 1, undigable = 1},
 })
 
-minetest.register_node("old_old_mapgen:undigable_amethyst", {
+minetest.register_node("fragments:undigable_amethyst", {
 	description = "Amethyst",
 	drawtype = "glasslike",
-	tiles = {"old_old_mapgen_amethyst.png"},
+	tiles = {"fragments_amethyst.png"},
 	paramtype = "light",
 	use_texture_alpha = "blend",
 	is_ground_content = true,
@@ -179,15 +179,15 @@ minetest.register_node("old_old_mapgen:undigable_amethyst", {
 	sounds = default.node_sound_glass_defaults(),
 })
 
-minetest.register_node("old_old_mapgen:undigable_lapis_lazuli", {
+minetest.register_node("fragments:undigable_lapis_lazuli", {
 	description = "Lapis Lazuli",
-	tiles = {"old_old_mapgen_lapis_lazuli.png"},
+	tiles = {"fragments_lapis_lazuli.png"},
 	is_ground_content = true,
 	groups = {not_in_creative_inventory = 1, unbreakable = 1},
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_node("old_old_mapgen:mese", {
+minetest.register_node("fragments:mese", {
 	description = "Mese",
 	tiles = {"default_mese_block.png"},
 	is_ground_content = true,
@@ -195,7 +195,7 @@ minetest.register_node("old_old_mapgen:mese", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_node("old_old_mapgen:diamond_block", {
+minetest.register_node("fragments:diamond_block", {
 	description = "Diamond",
 	tiles = {"default_diamond_block.png"},
 	is_ground_content = true,
@@ -203,7 +203,7 @@ minetest.register_node("old_old_mapgen:diamond_block", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_node("old_old_mapgen:gold_block", {
+minetest.register_node("fragments:gold_block", {
 	description = "Gold",
 	tiles = {"default_gold_block.png"},
 	is_ground_content = true,
@@ -211,7 +211,7 @@ minetest.register_node("old_old_mapgen:gold_block", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_node("old_old_mapgen:ladder_wood", {
+minetest.register_node("fragments:ladder_wood", {
 	description = "Ladder",
 	drawtype = "signlike",
 	tiles = {"default_ladder_wood.png"},
@@ -231,14 +231,14 @@ minetest.register_node("old_old_mapgen:ladder_wood", {
 	sounds = default.node_sound_wood_defaults(),
 })
 
-minetest.register_node("old_old_mapgen:desert_sandstone_brick", {
+minetest.register_node("fragments:desert_sandstone_brick", {
 	description = "Unbreakable Desert Sandstone Brick",
 	tiles = {"default_desert_sandstone_brick.png"},
 	sounds = default.node_sound_stone_defaults(),
 	groups = {not_in_creative_inventory = 1, undigable = 1},
 })
 
-minetest.register_node("old_old_mapgen:teleport_door", {
+minetest.register_node("fragments:teleport_door", {
 	description = "Unbreakable Teleporting Door",
 	tiles = {"default_desert_sandstone_brick.png"},
 	sounds = default.node_sound_stone_defaults(),
@@ -254,7 +254,7 @@ minetest.register_node("old_old_mapgen:teleport_door", {
 						bounce = 1,
 						pos = vector.new(0,1,0),
 						attached = clicker,
-						node = {name = "old_old_mapgen:teleport_door"},
+						node = {name = "fragments:teleport_door"},
 						minsize = 0.05,
 						maxsize = 0.5,
 						vel = {
@@ -271,7 +271,7 @@ minetest.register_node("old_old_mapgen:teleport_door", {
 	groups = {not_in_creative_inventory = 1, undigable = 1},
 })
 
-minetest.register_node("old_old_mapgen:glass", {
+minetest.register_node("fragments:glass", {
 	description = "Glass",
 	drawtype = "glasslike_framed_optional",
 	tiles = {"default_glass.png", "default_glass_detail.png"},
@@ -282,7 +282,7 @@ minetest.register_node("old_old_mapgen:glass", {
 	groups = {not_in_creative_inventory = 1, undigable = 1}
 })
 
-minetest.register_node("old_old_mapgen:obsidian_glass", {
+minetest.register_node("fragments:obsidian_glass", {
 	description = "Glass",
 	drawtype = "glasslike_framed_optional",
 	tiles = {"default_obsidian_glass.png", "default_obsidian_glass_detail.png"},
@@ -294,7 +294,7 @@ minetest.register_node("old_old_mapgen:obsidian_glass", {
 })
 
 
-minetest.register_node("old_old_mapgen:glow_glass", {
+minetest.register_node("fragments:glow_glass", {
 	description = "glow Glass",
 	drawtype = "glasslike_framed_optional",
 	tiles = {"default_glass.png^[colorize:#E9CD61", "default_glass_detail.png^[colorize:#E9CD61"},
@@ -306,7 +306,7 @@ minetest.register_node("old_old_mapgen:glow_glass", {
 	groups = {not_in_creative_inventory = 1, undigable = 1},
 })
 
-minetest.register_node("old_old_mapgen:void", {
+minetest.register_node("fragments:void", {
 	description = "Damaging Void",
 	drawtype = "airlike",
 	tiles = {"blank.png"},

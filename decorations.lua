@@ -1,4 +1,6 @@
 minetest.clear_registered_decorations()
+flowers.register_decorations()
+
 
 local path = minetest.get_modpath("ethereal") .. "/schematics/"
 local dpath = minetest.get_modpath("default") .. "/schematics/"
@@ -1079,5 +1081,120 @@ minetest.register_decoration({
 	param2 = 48,
 	param2_max = 96,
 })
+minetest.register_decoration({
+	name = "farming:cotton_wild",
+	deco_type = "simple",
+	place_on = {"default:dry_dirt_with_dry_grass"},
+	sidelen = 16,
+	noise_params = {
+		offset = -0.1,
+		scale = 0.1,
+		spread = {x = 50, y = 50, z = 50},
+		seed = 4242,
+		octaves = 3,
+		persist = 0.7
+	},
+	biomes = {"savanna"},
+	y_max = 31000,
+	y_min = 1,
+	decoration = "farming:cotton_wild",
+})
+
+minetest.register_decoration({
+	name = "fireflies:firefly_low",
+	deco_type = "simple",
+	place_on = {
+		"default:dirt_with_grass",
+		"default:dirt_with_coniferous_litter",
+		"default:dirt_with_rainforest_litter",
+		"default:dirt"
+	},
+	place_offset_y = 2,
+	sidelen = 80,
+	fill_ratio = 0.0005,
+	biomes = {
+		"deciduous_forest",
+		"coniferous_forest",
+		"rainforest",
+		"rainforest_swamp"
+	},
+	y_max = 31000,
+	y_min = -1,
+	decoration = "fireflies:firefly",
+})
+
+minetest.register_decoration({
+	name = "fireflies:firefly_high",
+	deco_type = "simple",
+	place_on = {
+		"default:dirt_with_grass",
+		"default:dirt_with_coniferous_litter",
+		"default:dirt_with_rainforest_litter",
+		"default:dirt"
+	},
+	place_offset_y = 3,
+	sidelen = 80,
+	fill_ratio = 0.0005,
+	biomes = {
+		"deciduous_forest",
+		"coniferous_forest",
+		"rainforest",
+		"rainforest_swamp"
+	},
+	y_max = 31000,
+	y_min = -1,
+	decoration = "fireflies:firefly",
+})
+
+minetest.register_decoration({
+	name = "butterflies:butterfly",
+	deco_type = "simple",
+	place_on = {"default:dirt_with_grass"},
+	place_offset_y = 2,
+	sidelen = 80,
+	fill_ratio = 0.005,
+	biomes = {"grassland", "deciduous_forest"},
+	y_max = 31000,
+	y_min = 1,
+	decoration = {
+		"butterflies:butterfly_white",
+		"butterflies:butterfly_red",
+		"butterflies:butterfly_violet"
+	},
+	spawn_by = "group:flower",
+	num_spawn_by = 1
+})
+
+-- get decoration IDs
+local butterflies = minetest.get_decoration_id("butterflies:butterfly")
+local firefly_low = minetest.get_decoration_id("fireflies:firefly_low")
+local firefly_high = minetest.get_decoration_id("fireflies:firefly_high")
 
 
+minetest.set_gen_notify({decoration = true}, {firefly_low, firefly_high, butterflies})
+
+-- start nodetimers
+minetest.register_on_generated(function(minp, maxp, blockseed)
+	local gennotify = minetest.get_mapgen_object("gennotify")
+	local poslist = {}
+
+	for _, pos in ipairs(gennotify["decoration#"..firefly_low] or {}) do
+		local firefly_low_pos = {x = pos.x, y = pos.y + 3, z = pos.z}
+		table.insert(poslist, firefly_low_pos)
+	end
+	for _, pos in ipairs(gennotify["decoration#"..firefly_high] or {}) do
+		local firefly_high_pos = {x = pos.x, y = pos.y + 4, z = pos.z}
+		table.insert(poslist, firefly_high_pos)
+	end
+	for _, pos in ipairs(gennotify["decoration#"..butterflies] or {}) do
+		local deco_pos = {x = pos.x, y = pos.y + 3, z = pos.z}
+		table.insert(poslist, deco_pos)
+	end
+
+	if #poslist ~= 0 then
+		for i = 1, #poslist do
+			local pos = poslist[i]
+			minetest.get_node_timer(pos):start(1)
+		end
+	end
+end)

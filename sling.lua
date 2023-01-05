@@ -10,7 +10,7 @@ local function sling(player, itemstack)
 			minetest.after(i, function()
 				local wi = player:get_wielded_item():get_name()
 				if held == true then
-					if wi == "old_old_mapgen:sling" then
+					if wi == "fragments:sling" then
 						charge = charge + 2
 						if i >= 4 then
 							held = false
@@ -34,16 +34,16 @@ local function sling(player, itemstack)
 	end
 end
 
- minetest.register_craftitem("old_old_mapgen:sling", {
+ minetest.register_craftitem("fragments:sling", {
 	description = "Slingshot\nRightclick to sling!",
-	inventory_image = "old_old_mapgen_sling.png",
+	inventory_image = "fragments_sling.png",
 	on_place = function(itemstack, user, pointed_thing)
 		sling(user, itemstack)
 	end,
 })
 
 minetest.register_craft({
-	output = "old_old_mapgen:sling",
+	output = "fragments:sling",
 	recipe = {
 		{"default:mese_crystal_fragment", "", "default:mese_crystal_fragment"},
 		{"default:steel_ingot", "default:stick", "default:steel_ingot"},
@@ -51,13 +51,13 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craftitem("old_old_mapgen:bouncer", {
+minetest.register_craftitem("fragments:bouncer", {
 	description = "Bouncer\nHold this to bounce after slinging!",
-	inventory_image = "old_old_mapgen_bouncer.png",
+	inventory_image = "fragments_bouncer.png",
 })
 
 minetest.register_craft({
-	output = "old_old_mapgen:bouncer",
+	output = "fragments:bouncer",
 	recipe = {
 		{"default:mese_crystal_fragment", "default:mese_crystal_fragment", "default:mese_crystal_fragment"},
 		{"default:diamond", "default:diamond", "default:diamond"},
@@ -69,7 +69,7 @@ minetest.register_craft({
 	local meta = player:get_meta()
 	if reason.type == "fall" then
 		if meta:get_int("sling:bouncing") == 1 then
-			if player:get_wielded_item():get_name() == "old_old_mapgen:bouncer" then
+			if player:get_wielded_item():get_name() == "fragments:bouncer" then
 				player:add_velocity(vector.multiply(minetest.deserialize(meta:get_string("sling:dir")),
 					meta:get_int("sling:charge")/2))
 				if meta:get_int("sling:charge")/2 <= 12.5 then

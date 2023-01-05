@@ -145,7 +145,7 @@ end)
 
 
 
-function old_old_mapgen.spawn_floatlands(player)
+function fragments.spawn_floatlands(player)
 	local PSCA = 12 -- Player scatter from world centre in chunks (80 nodes).
 	local xsp
 	local ysp

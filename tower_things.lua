@@ -1,18 +1,18 @@
-local tower_position = old_old_mapgen.tower_position
+local tower_position = fragments.tower_position
 
-minetest.register_node("old_old_mapgen:tower_door", {
+minetest.register_node("fragments:tower_door", {
 	description = "Tower Door",
 	tiles = {"default_obsidian.png"},
 	sounds = default.node_sound_glass_defaults(),
 	groups = {not_in_creative_inventory = 1, undigable = 1},
 })
 
-minetest.register_craftitem("old_old_mapgen:tower_key", {
+minetest.register_craftitem("fragments:tower_key", {
 	description = minetest.colorize("purple", "Tower Key") .. "\nTo use, rightclick on the tower door...",
-	inventory_image = "old_old_mapgen_tower_key.png",
+	inventory_image = "fragments_tower_key.png",
 	on_place = function(itemstack, placer, pointed_thing)
 		if pointed_thing.type == "node" then
-			if minetest.get_node(pointed_thing.under).name == "old_old_mapgen:tower_door" then
+			if minetest.get_node(pointed_thing.under).name == "fragments:tower_door" then
 				if placer and placer:is_player() then
 					minetest.add_particlespawner({
 						amount = 250,
@@ -46,11 +46,11 @@ minetest.register_craftitem("old_old_mapgen:tower_key", {
 })
 
 minetest.register_craft({
-	output = "old_old_mapgen:tower_key",
+	output = "fragments:tower_key",
 	recipe = {
-		{"old_old_mapgen:amethyst_crystal", "old_old_mapgen:amethyst_crystal", "old_old_mapgen:amethyst_crystal"},
-		{"old_old_mapgen:amethyst_crystal", "default:gold_ingot", "old_old_mapgen:amethyst_crystal"},
-		{"old_old_mapgen:amethyst_crystal", "old_old_mapgen:amethyst_crystal", "old_old_mapgen:amethyst_crystal"},
+		{"fragments:amethyst_crystal", "fragments:amethyst_crystal", "fragments:amethyst_crystal"},
+		{"fragments:amethyst_crystal", "default:gold_ingot", "fragments:amethyst_crystal"},
+		{"fragments:amethyst_crystal", "fragments:amethyst_crystal", "fragments:amethyst_crystal"},
 	}
 })
 
@@ -71,7 +71,7 @@ local function tower_locate(itemstack, placer)
 			pos = vector.new(0,1,0),
 			attached = placer,
 			texture = {
-				name = "old_old_mapgen_lapis_chunk.png",
+				name = "fragments_lapis_chunk.png",
 				alpha_tween = {1, 0},
 			},
 			glow = 3,
@@ -95,7 +95,7 @@ local function tower_locate(itemstack, placer)
 			bounce = 1,
 			pos = vector.new(0,1,0),
 			attached = placer,
-			texture = "old_old_mapgen_lapis_chunk.png",
+			texture = "fragments_lapis_chunk.png",
 			glow = 3,
 			minsize = 0.1,
 			maxsize = 0.7,
@@ -117,9 +117,9 @@ local function tower_locate(itemstack, placer)
 	end
 end
 
-minetest.register_craftitem("old_old_mapgen:tower_locator", {
+minetest.register_craftitem("fragments:tower_locator", {
 	description = minetest.colorize("blue", "Tower Locator"),
-	inventory_image = "old_old_mapgen_tower_locator.png",
+	inventory_image = "fragments_tower_locator.png",
 	on_place = function(itemstack, placer, pointed_thing)
 		tower_locate(itemstack, placer)
 	end,
@@ -129,11 +129,11 @@ minetest.register_craftitem("old_old_mapgen:tower_locator", {
 })
 
 minetest.register_craft({
-	output = "old_old_mapgen:tower_locator",
+	output = "fragments:tower_locator",
 	recipe = {
-		{"default:diamond", "old_old_mapgen:lapis_chunk", "default:diamond"},
-		{"old_old_mapgen:lapis_chunk", "default:gold_ingot", "old_old_mapgen:lapis_chunk"},
-		{"default:diamond", "old_old_mapgen:lapis_chunk", "default:diamond"},
+		{"default:diamond", "fragments:lapis_chunk", "default:diamond"},
+		{"fragments:lapis_chunk", "default:gold_ingot", "fragments:lapis_chunk"},
+		{"default:diamond", "fragments:lapis_chunk", "default:diamond"},
 	}
 })
 
@@ -159,14 +159,14 @@ local form_active = --"formspec_version[6]" ..
 	"item_image[7,3;2.2,2.2;default:dirt]" ..
 	"item_image[7,2;2.2,2.2;default:mese]" ..	
 	"item_image[7,1;2.2,2.2;fire:basic_flame]" ..
-	"item_image[7.75,3.43;2.1,2.1;old_old_mapgen:lapis_lazuli]" ..
-	"item_image[6.35,3.43;2.1,2.1;old_old_mapgen:amethyst]" ..
+	"item_image[7.75,3.43;2.1,2.1;fragments:lapis_lazuli]" ..
+	"item_image[6.35,3.43;2.1,2.1;fragments:amethyst]" ..
 	--"model[10,5;4,4;chicken;chicken_model.x;lottmobs_chicken.png;0,10;true;false]"
 	"button_exit[0.5,4;6,1;activate;" .. minetest.colorize("green", "INITIALIZE TELEPORTATION") .. "]"
 
-minetest.register_node("old_old_mapgen:tower_controller", {
+minetest.register_node("fragments:tower_controller", {
 	description = "Tower Controller",
-	tiles = {"old_old_mapgen_tower_controller.png"},
+	tiles = {"fragments_tower_controller.png"},
 	sounds = default.node_sound_glass_defaults(),
 	groups = {not_in_creative_inventory = 1, undigable = 1},
 	on_rightclick = function(pos, node, clicker)
@@ -175,9 +175,9 @@ minetest.register_node("old_old_mapgen:tower_controller", {
 				{x = pos.x - 1, y = pos.y, z = pos.z - 1},
 				{x = pos.x + 1, y = pos.y, z = pos.z + 1}, 
 				{"default:mese", "default:diamondblock",
-				"old_old_mapgen:lapis_lazuli", "old_old_mapgen:amethyst"})
+				"fragments:lapis_lazuli", "fragments:amethyst"})
 			if num["default:mese"] == 1 and num["default:diamondblock"] == 1 and
-				num["old_old_mapgen:lapis_lazuli"] == 1 and num["old_old_mapgen:amethyst"] == 1 then
+				num["fragments:lapis_lazuli"] == 1 and num["fragments:amethyst"] == 1 then
 				local meta = clicker:get_meta()
 				meta:set_string("tmp_tower_position", minetest.pos_to_string(pos))
 				minetest.show_formspec(clicker:get_player_name(), "tower_controller",
@@ -211,7 +211,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 			{x = pos.x - 1, y = pos.y, z = pos.z - 1},
 			{x = pos.x + 1, y = pos.y, z = pos.z + 1}, 
 			{"default:mese", "default:diamondblock",
-			"old_old_mapgen:lapis_lazuli", "old_old_mapgen:amethyst"})
+			"fragments:lapis_lazuli", "fragments:amethyst"})
 		for _, p in pairs(nodes) do
 			minetest.remove_node(p)
 		end
@@ -222,9 +222,9 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 			collisiondetection = false,
 			pos = pos,
 			texpool = {
-				"old_old_mapgen_tower_controller.png",
-				"old_old_mapgen_amethyst.png",
-				"old_old_mapgen_lapis_lazuli.png",
+				"fragments_tower_controller.png",
+				"fragments_amethyst.png",
+				"fragments_lapis_lazuli.png",
 				"default_mese_block.png",
 				"default_diamond_block.png",
 			},
@@ -257,11 +257,11 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 	end
 end)
 
-minetest.register_node("old_old_mapgen:floatlands_teleporter", {
+minetest.register_node("fragments:floatlands_teleporter", {
 	description = "Teleporter to the Floatlands",
 	drawtype = "mesh",
-	mesh = "old_old_mapgen_teleporter.obj",
-	tiles = {"old_old_mapgen_tower_controller.png"},
+	mesh = "fragments_teleporter.obj",
+	tiles = {"fragments_tower_controller.png"},
 	on_rightclick = function(pos, node, clicker)
 		if not clicker:is_player() then
 			return
@@ -307,7 +307,7 @@ minetest.register_node("old_old_mapgen:floatlands_teleporter", {
 				meta = clicker:get_meta()
 				meta:set_string("tower:teleporting", "")
 				meta:set_string("tower:realm", "floatlands")
-				old_old_mapgen.spawn_floatlands(clicker)
+				fragments.spawn_floatlands(clicker)
 				clicker:set_physics_override({gravity = 0.55})
 				minetest.chat_send_player(clicker:get_player_name(),
 					minetest.colorize("yellow", "Teleported to the floatlands! Good luck!"))
