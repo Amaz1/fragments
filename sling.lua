@@ -38,7 +38,11 @@ end
 	description = "Slingshot\nRightclick to sling!",
 	inventory_image = "fragments_sling.png",
 	on_place = function(itemstack, user, pointed_thing)
-		sling(user, itemstack)
+		if user:get_pos().y > 29500 then
+			minetest.chat_send_player(user:get_player_name(), "Can't sling here!")
+		else
+			sling(user, itemstack)
+		end
 	end,
 })
 

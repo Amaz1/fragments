@@ -39,6 +39,7 @@ minetest.register_on_newplayer(function(player)
 	local meta = player:get_meta()
 	meta:set_string("tower:realm", "base")
 	fragments.spawn_base(player)
+	player:get_inventory():add_item("main", ItemStack("fragments:welcome_book"))
 end)
 
 minetest.register_on_joinplayer(function(player)
@@ -48,7 +49,29 @@ minetest.register_on_joinplayer(function(player)
 	end
 end)
 
+-- Hacky (but only?) way of disabling bones in obstacle course...
+local old_creative = minetest.is_creative_enabled
+local temp_create = {}
+
+function minetest.is_creative_enabled(name)
+	if temp_create[name] == true then
+		return true
+	end
+	old_creative(name)
+end
+
+local function on_die(player)
+	if player:get_pos().y > 29500 then
+		temp_create[player:get_player_name()] = true
+		minetest.after(2, function()
+			temp_create[player:get_player_name()] = nil
+		end)
+	end
+end
+table.insert(minetest.registered_on_dieplayers, 1, on_die)
+
 minetest.register_on_respawnplayer(function(player)
+	temp_create[player:get_player_name()] = nil
 	local meta = player:get_meta()
 	local realm = meta:get_string("tower:realm")
 	if meta:contains("tower:respawn_pos") then

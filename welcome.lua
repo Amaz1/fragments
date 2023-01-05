@@ -95,3 +95,18 @@ minetest.register_chatcommand("welcome", {
 		minetest.show_formspec(name, "welcome", welcome)
 	end
 })
+
+minetest.register_craftitem("fragments:welcome_book", {
+	description = "Welcome Information Book\nCan also be accessed by /welcome",
+	inventory_image = "fragments_welcome_book.png",
+	on_use = function(i, user)
+		if user and user:is_player() then
+			minetest.show_formspec(user:get_player_name(), "welcome", welcome)
+		end
+	end,
+	on_secondary_use = function(i, user)
+		if user and user:is_player() then
+			minetest.show_formspec(user:get_player_name(), "welcome", welcome)
+		end
+	end,
+})

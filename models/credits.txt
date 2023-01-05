@@ -1,0 +1,4 @@
+All models: CC BY-SA 3.0 
+
+Amaz:
+	fragments_teleporter.obj

@@ -1,0 +1,24 @@
+All textures: CC BY-SA 3.0
+
+corvus262 (https://github.com/theraven262/):
+	fragments_amethyst_crystal.png
+	fragments_amethyst.png
+	fragments_bouncer.png
+	fragments_lapis_chunk.png
+	fragments_lapis_lazuli.png
+	fragments_mineral_amethyst.png
+	fragments_mineral_lapis.png
+	fragments_tower_controller.png
+	fragments_tower_locator.png
+
+PilzAdam, modified by BlockMen:
+	fragments_hud_fg.png
+
+Bennyboi_hack (https://opengameart.org/content/16x16-weapon-sprites-free):
+	fragments_sling.png
+
+Gambit (modified by Amaz):
+	fragments_tower_key.png
+
+fishyWET:
+	fragments_welcome_book.png
