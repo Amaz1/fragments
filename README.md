@@ -21,7 +21,7 @@ Use the welcome book or /welcome for information about how to start out.
 ### License
 Code: LGPL v2.1
 
-Textures & models: CC BY-SA 3.0
+Textures & models: CC BY-SA 3.0 (qFor attribution, please see textures/credits.txt and models/credits.txt)11
 
 Thank you very much to @theraven262 for lots of the textures!
 
